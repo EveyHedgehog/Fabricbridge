@@ -18,10 +18,10 @@ import io.github.haykam821.fabricbridge.config.ModConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.HoverEvent;
-import net.minecraft.text.LiteralText;
+// import net.minecraft.text.LiteralText;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.TranslatableTextContent;
 
 public class Message {
 	private static final MinecraftClient CLIENT = MinecraftClient.getInstance();
@@ -42,22 +42,22 @@ public class Message {
 
 	public Text getHoverRow(String value, String lang, boolean first) {
 		// Prefix
-		LiteralText prefixText = new LiteralText(first ? "§6" : "\n§6");
+		Text prefixText = new Text.literal(first ? "§6" : "\n§6");
 
 		// Key
-		TranslatableText keyText = new TranslatableText(lang);
+		TranslatableTextContent keyText = new TranslatableTextContent(lang);
 
 		// Value
-		LiteralText valueText = new LiteralText(" §7" + value);
+		Text valueText = new Text.literal(" §7" + value);
 
 		// Merge three components together
-		LiteralText fullText = new LiteralText("");
+		Text fullText = new Text.literal("");
 		return fullText.append(prefixText).append(keyText).append(valueText);
 	}
 
 	public Text getHoverText() {
 		// Merge all rows together
-		LiteralText fullText = new LiteralText("");
+		Text fullText = new Text.literal("");
 		return fullText
 			.append(getHoverRow(gateway, "fabricbridge.info.gateway", true))
 			.append(getHoverRow(protocol, "fabricbridge.info.protocol", false))
@@ -68,7 +68,7 @@ public class Message {
 		ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 
 		// Prefix
-		MutableText prefixText = new LiteralText("§9§lDISCORD");
+		MutableText prefixText = new Text.literal("§9§lDISCORD");
 		if (config.hoverText) {
 			prefixText = prefixText.styled(style -> {
 				Text hoverText = this.getHoverText();
@@ -77,13 +77,13 @@ public class Message {
 		}
 
 		// Username
-		LiteralText usernameText = new LiteralText(" §e" + username);
+		Text usernameText = new Text.literal(" §e" + username);
 
 		// Text
-		LiteralText textText = new LiteralText(" §r§f" + text);
+		Text textText = new Text.literal(" §r§f" + text);
 
 		// Merge three components together
-		LiteralText fullText = new LiteralText("");
+		Text fullText = new Text.literal("");
 		return fullText.append(prefixText).append(usernameText).append(textText);
 	}
 

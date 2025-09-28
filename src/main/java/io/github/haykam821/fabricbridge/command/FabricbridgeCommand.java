@@ -11,7 +11,7 @@ import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.TranslatableTextContent;
 
 public class FabricbridgeCommand {
 	public static void register() {
@@ -32,7 +32,7 @@ public class FabricbridgeCommand {
 				message.send();
 				message.sendLiteralText();
 			} catch (Exception err) {
-				context.getSource().sendError(new TranslatableText("commands.fabricbridge.failed"));
+				context.getSource().sendError(new TranslatableTextContent("commands.fabricbridge.failed"));
 			}
 		});
 		return 1;
