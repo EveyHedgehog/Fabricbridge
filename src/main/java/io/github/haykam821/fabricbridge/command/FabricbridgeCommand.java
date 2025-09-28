@@ -36,7 +36,7 @@ public class FabricbridgeCommand {
 				message.send();
 				message.sendLiteralText();
 			} catch (Exception err) {
-				Text failure = Text.translatable("commands.fabricbridge.failed")
+				Text failure = Text.translatable("commands.fabricbridge.failed");
 				context.getSource().sendError(failure);
 			}
 		});
