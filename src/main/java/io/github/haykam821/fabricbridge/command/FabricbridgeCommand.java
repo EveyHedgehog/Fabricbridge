@@ -12,13 +12,16 @@ import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableTextContent;
 
 public class FabricbridgeCommand {
 	public static void register() {
-		ClientCommandRegistrationCallback.EVENT.register(ClientCommandManager.literal("fb")
-			.then(ClientCommandManager.argument("message", StringArgumentType.greedyString())
-			.executes(FabricbridgeCommand::execute)));
+ 		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> dispatcher.register(literal("fb")
+        .then(argument("message", StringArgumentType.greedyString())
+            .executes(FabricbridgeCommand::execute)
+            )));
+
 	}
 
 	private static int execute(CommandContext<FabricClientCommandSource> context) {
@@ -33,7 +36,8 @@ public class FabricbridgeCommand {
 				message.send();
 				message.sendLiteralText();
 			} catch (Exception err) {
-				context.getSource().sendError(Text.translatable("commands.fabricbridge.failed"));
+				Text failure = Text.translatable("commands.fabricbridge.failed")
+				context.getSource().sendError(failure);
 			}
 		});
 		return 1;
