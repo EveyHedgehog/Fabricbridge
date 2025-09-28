@@ -42,22 +42,22 @@ public class Message {
 
 	public Text getHoverRow(String value, String lang, boolean first) {
 		// Prefix
-		Text prefixText = new Text.literal(first ? "§6" : "\n§6");
+		Text prefixText = Text.literal(first ? "§6" : "\n§6");
 
 		// Key
-		TranslatableTextContent keyText = new TranslatableTextContent(lang);
+		TranslatableTextContent keyText = TranslatableTextContent(lang);
 
 		// Value
-		Text valueText = new Text.literal(" §7" + value);
+		Text valueText = Text.literal(" §7" + value);
 
 		// Merge three components together
-		Text fullText = new Text.literal("");
+		Text fullText = Text.literal("");
 		return fullText.append(prefixText).append(keyText).append(valueText);
 	}
 
 	public Text getHoverText() {
 		// Merge all rows together
-		Text fullText = new Text.literal("");
+		Text fullText = Text.literal("");
 		return fullText
 			.append(getHoverRow(gateway, "fabricbridge.info.gateway", true))
 			.append(getHoverRow(protocol, "fabricbridge.info.protocol", false))
@@ -68,7 +68,7 @@ public class Message {
 		ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 
 		// Prefix
-		MutableText prefixText = new Text.literal("§9§lDISCORD");
+		MutableText prefixText = Text.literal("§9§lDISCORD");
 		if (config.hoverText) {
 			prefixText = prefixText.styled(style -> {
 				Text hoverText = this.getHoverText();
@@ -77,13 +77,13 @@ public class Message {
 		}
 
 		// Username
-		Text usernameText = new Text.literal(" §e" + username);
+		Text usernameText = Text.literal(" §e" + username);
 
 		// Text
-		Text textText = new Text.literal(" §r§f" + text);
+		Text textText = Text.literal(" §r§f" + text);
 
 		// Merge three components together
-		Text fullText = new Text.literal("");
+		Text fullText = Text.literal("");
 		return fullText.append(prefixText).append(usernameText).append(textText);
 	}
 
