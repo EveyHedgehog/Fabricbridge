@@ -32,3 +32,5 @@ build/
 
 .classpath
 .DS_Store
+
+!gradle-wrapper.jar
