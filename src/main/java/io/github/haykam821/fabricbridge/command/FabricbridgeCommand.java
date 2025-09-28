@@ -26,7 +26,7 @@ public class FabricbridgeCommand {
 			try {
 				ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 
-				String username = (config.username != null && config.username.length() > 0) ? config.username : MinecraftClient.getInstance().player.getName().asString();
+				String username = (config.username != null && config.username.length() > 0) ? config.username : MinecraftClient.getInstance().player.getName().getString();
 				String text = StringArgumentType.getString(context, "message");
 
 				Message message = new Message(username, text, config.gateway, "fabricbridge", "minecraft");

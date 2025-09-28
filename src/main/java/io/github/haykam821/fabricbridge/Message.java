@@ -57,11 +57,8 @@ public class Message {
 
 	public Text getHoverText() {
 		// Merge all rows together
-		Text fullText = Text.literal("");
-		return fullText
-			.append(getHoverRow(gateway, "fabricbridge.info.gateway", true))
-			.append(getHoverRow(protocol, "fabricbridge.info.protocol", false))
-			.append(getHoverRow(channel, "fabricbridge.info.channel", false));
+		MutableText fullText = Text.literal("");
+		return fullText.append(getHoverRow(gateway, "fabricbridge.info.gateway", true)).append(getHoverRow(protocol, "fabricbridge.info.protocol", false)).append(getHoverRow(channel, "fabricbridge.info.channel", false));
 	}
 
 	public Text getLiteralText() {
