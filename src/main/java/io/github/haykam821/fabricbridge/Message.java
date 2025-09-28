@@ -66,7 +66,7 @@ public class Message {
 
 	public Text getLiteralText() {
 		ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
-	
+
 		// Prefix
 		MutableText prefixText = new LiteralText("§9§lDISCORD");
 		if (config.hoverText) {
