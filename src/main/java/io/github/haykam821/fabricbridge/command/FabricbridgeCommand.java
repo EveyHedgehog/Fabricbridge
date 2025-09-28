@@ -9,13 +9,14 @@ import io.github.haykam821.fabricbridge.Message;
 import io.github.haykam821.fabricbridge.config.ModConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.TranslatableTextContent;
 
 public class FabricbridgeCommand {
 	public static void register() {
-		ClientCommandManager.DISPATCHER.register(ClientCommandManager.literal("fb")
+		ClientCommandRegistrationCallback.EVENT.register(ClientCommandManager.literal("fb")
 			.then(ClientCommandManager.argument("message", StringArgumentType.greedyString())
 			.executes(FabricbridgeCommand::execute)));
 	}
@@ -32,7 +33,7 @@ public class FabricbridgeCommand {
 				message.send();
 				message.sendLiteralText();
 			} catch (Exception err) {
-				context.getSource().sendError(new TranslatableTextContent("commands.fabricbridge.failed"));
+				context.getSource().sendError(Text.translatable("commands.fabricbridge.failed"));
 			}
 		});
 		return 1;

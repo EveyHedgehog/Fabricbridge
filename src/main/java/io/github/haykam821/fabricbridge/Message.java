@@ -42,16 +42,16 @@ public class Message {
 
 	public Text getHoverRow(String value, String lang, boolean first) {
 		// Prefix
-		Text prefixText = Text.literal(first ? "§6" : "\n§6");
+		MutableText prefixText = Text.literal(first ? "§6" : "\n§6");
 
 		// Key
-		TranslatableTextContent keyText = TranslatableTextContent(lang);
+		Text keyText = Text.translatable(lang);
 
 		// Value
-		Text valueText = Text.literal(" §7" + value);
+		MutableText valueText = Text.literal(" §7" + value);
 
 		// Merge three components together
-		Text fullText = Text.literal("");
+		MutableText fullText = Text.literal("");
 		return fullText.append(prefixText).append(keyText).append(valueText);
 	}
 
@@ -77,13 +77,13 @@ public class Message {
 		}
 
 		// Username
-		Text usernameText = Text.literal(" §e" + username);
+		MutableText usernameText = Text.literal(" §e" + username);
 
 		// Text
-		Text textText = Text.literal(" §r§f" + text);
+		MutableText textText = Text.literal(" §r§f" + text);
 
 		// Merge three components together
-		Text fullText = Text.literal("");
+		MutableText fullText = Text.literal("");
 		return fullText.append(prefixText).append(usernameText).append(textText);
 	}
 
