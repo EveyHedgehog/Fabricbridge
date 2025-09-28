@@ -17,10 +17,8 @@ import net.minecraft.text.TranslatableTextContent;
 
 public class FabricbridgeCommand {
 	public static void register() {
- 		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> dispatcher.register(literal("fb")
-        .then(argument("message", StringArgumentType.greedyString())
-            .executes(FabricbridgeCommand::execute)
-            )));
+ 		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> dispatcher.register(literal("fb").then(argument("message", StringArgumentType.greedyString()).executes(FabricbridgeCommand::execute))));
+
 
 	}
 
